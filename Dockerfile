@@ -11,3 +11,5 @@ COPY Pipfile* /app/
 RUN pipenv install --dev
 
 COPY . /app
+
+RUN python manage.py db upgrade -d app/migrations/ && cd app/ && flask run -h 0.0.0.0 -p 8000
